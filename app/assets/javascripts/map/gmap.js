@@ -3,11 +3,10 @@ $(window).load(function() {
 });
 
 var map;
-
 function initialize() {
         
   var mapOptions = {
-          center: new google.maps.LatLng(50.342056, 30.905271),
+          center: new google.maps.LatLng(latitude, longitude),
           zoom: 12,
           mapTypeId: google.maps.MapTypeId.NORMAL,
           panControl: true,
