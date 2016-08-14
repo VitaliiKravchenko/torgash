@@ -24,10 +24,12 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
- gem 'bcrypt', '~> 3.1.7'
+# gem 'bcrypt', '~> 3.1.7'
+gem "bcrypt-ruby", :require => "bcrypt"
 gem 'geocoder'
 gem 'omniauth-facebook', '~> 1.4.1'
 
+gem 'meta_request'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
