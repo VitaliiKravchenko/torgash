@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
 #  has_secure_password
+  has_many :products
   attr_accessor :password, :password_confirmation
   geocoded_by :city   # can also be an IP address
   after_validation :geocode          # auto-fetch coordinates
   before_save :encrypt_password
   def self.from_omniauth(auth)
-#    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         user.provider = auth.provider
         user.uid = auth.uid
