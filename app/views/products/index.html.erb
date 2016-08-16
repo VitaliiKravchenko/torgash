@@ -17,7 +17,7 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= product.name %></td>
+        <td><%= product.user.name %></td>
         <td><%= product.title %></td>
         <td><%= product.description %></td>
         <td><%= product.image_url %></td>

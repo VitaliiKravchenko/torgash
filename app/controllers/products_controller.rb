@@ -24,9 +24,10 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
-    @product.user_id = session[:user_id]
-    @product.name = User.find(session[:user_id]).name
+#    @product = Product.new(product_params)
+    @product = current_user.products.build(product_params)
+#    @product.user_id = session[:user_id]
+#    @product.name = User.find(session[:user_id]).name
 
     respond_to do |format|
       if @product.save
@@ -63,9 +64,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  def product_owner
-    @owner = User.find(params[:user_id])
-  end
+#  def product_owner
+#    @owner = User.find(params[:user_id])
+#  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
