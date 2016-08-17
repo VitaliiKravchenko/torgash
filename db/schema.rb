@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815144143) do
+ActiveRecord::Schema.define(version: 20160817143651) do
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20160815144143) do
     t.datetime "oauth_expires_at"
     t.string   "password_hash"
     t.string   "password_salt"
+    t.string   "role"
   end
 
 end
