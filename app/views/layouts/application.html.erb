@@ -10,21 +10,19 @@
 
 <div>
   <% if current_user %>
-    Signed in as <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
-  <% else %>
-    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+      <% else %>
   <% end %>
 </div>
 
 <div id="user_nav">
   <% if current_user %>
-    Logged in as <%= current_user.email %>.
+    Signed in as <strong><%= current_user.name %></strong>!
     <%= link_to "Log out", log_out_path %>
   <% else %>
-    <%= link_to "Sign up", sign_up_path %> or
-    <%= link_to "log in", log_in_path %>
-  <% end %>
+    <%= link_to "Log in with Facebook", "/auth/facebook", id: "sign_in" %> or <%= link_to "Log in with password", log_in_path %> or
+
+    <%= link_to "Sign up", sign_up_path %> 
+      <% end %>
 </div>
 
 

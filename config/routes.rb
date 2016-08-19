@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :products
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
-  get 'signout', to: 'sessions#destroy', as: 'signout'
+#  get 'signout', to: 'sessions#destroy', as: 'signout'
 
   resources :sessions
   resource :home, only: [:show]
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 get "log_out" => "sessions#destroy", :as => "log_out"
 get "log_in" => "sessions#new", :as => "log_in"
 get "sign_up" => "users#new", :as => "sign_up"
-root :to => "users#new"
+root :to => "products#index"
 
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.

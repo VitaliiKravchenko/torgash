@@ -31,7 +31,7 @@ class MicropostsController < ApplicationController
  #    @micropost = current_user.microposts.build(params[:micropost].merge(:product_id))
     respond_to do |format|
       if @micropost.save
-        format.html { redirect_to @micropost, notice: 'Micropost was successfully created.' }
+        format.html { redirect_to  request.referer, notice: 'Micropost was successfully created.' }
         format.json { render :show, status: :created, location: @micropost }
       else
         format.html { render :new }
