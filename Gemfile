@@ -31,6 +31,7 @@ gem 'omniauth-facebook', '~> 1.4.1'
 
 gem 'meta_request'
 gem 'pundit'
+gem 'RedCloth'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

@@ -26,6 +26,7 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(micropost_params)
     @micropost.content = @micropost.content.gsub(/[<>&\/]/, '<' => '&lt;', '>' => '&gt;', '&' => '&amp;', '/' => '&frasl;') 
+    @micropost.content = RedCloth.new(@micropost.content).to_html
 #    @micropost = @product.microposts.build(micropost_params)
  #    @micropost = current_user.microposts.build(params[:micropost].merge(:product_id))
     respond_to do |format|
