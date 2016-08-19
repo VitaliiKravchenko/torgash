@@ -25,6 +25,7 @@ class MicropostsController < ApplicationController
   # POST /microposts.json
   def create
     @micropost = current_user.microposts.build(micropost_params)
+    @micropost.content = @micropost.content.gsub(/[<>&\/]/, '<' => '&lt;', '>' => '&gt;', '&' => '&amp;', '/' => '&frasl;') 
 #    @micropost = @product.microposts.build(micropost_params)
  #    @micropost = current_user.microposts.build(params[:micropost].merge(:product_id))
     respond_to do |format|
