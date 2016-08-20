@@ -19,12 +19,14 @@ class MicropostsController < ApplicationController
 
   # GET /microposts/1/edit
   def edit
+    @micropost.content = @micropost.content1
   end
 
   # POST /microposts
   # POST /microposts.json
   def create
     @micropost = current_user.microposts.build(micropost_params)
+    @micropost.content1 = @micropost.content
     @micropost.content = @micropost.content.gsub(/[<>&\/]/, '<' => '&lt;', '>' => '&gt;', '&' => '&amp;', '/' => '&frasl;') 
     @micropost.content = RedCloth.new(@micropost.content).to_html
     respond_to do |format|
@@ -43,6 +45,10 @@ class MicropostsController < ApplicationController
   def update
     respond_to do |format|
       if @micropost.update(micropost_params)
+         @micropost.content = @micropost.content.gsub(/[<>&\/]/, '<' => '&lt;', '>' => '&gt;', '&' => '&amp;', '/' => '&frasl;') 
+         @micropost.content = RedCloth.new(@micropost.content).to_html
+         @micropost.save
+
         format.html { redirect_to product_path(:id => @micropost.product.id),  notice: 'Micropost was successfully updated.' }
         format.json { render :show, status: :ok, location: @micropost }
       else

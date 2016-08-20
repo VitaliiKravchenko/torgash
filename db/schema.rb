@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160817143651) do
+ActiveRecord::Schema.define(version: 20160820060807) do
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20160817143651) do
     t.integer  "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "content1"
   end
 
   add_index "microposts", ["product_id"], name: "index_microposts_on_product_id"
