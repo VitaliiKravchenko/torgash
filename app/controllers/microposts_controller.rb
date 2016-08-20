@@ -45,6 +45,7 @@ class MicropostsController < ApplicationController
   def update
     respond_to do |format|
       if @micropost.update(micropost_params)
+         @micropost.content1 = @micropost.content
          @micropost.content = @micropost.content.gsub(/[<>&\/]/, '<' => '&lt;', '>' => '&gt;', '&' => '&amp;', '/' => '&frasl;') 
          @micropost.content = RedCloth.new(@micropost.content).to_html
          @micropost.save
@@ -63,7 +64,7 @@ class MicropostsController < ApplicationController
   def destroy
     @micropost.destroy
     respond_to do |format|
-      format.html { redirect_to microposts_url, notice: 'Micropost was successfully destroyed.' }
+      format.html { redirect_to product_path(:id => @micropost.product.id), notice: 'Micropost was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -76,6 +77,6 @@ class MicropostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def micropost_params
-      params.require(:micropost).permit(:content, :user_id, :product_id)
+      params.require(:micropost).permit(:content, :content1, :user_id, :product_id)
     end
 end
