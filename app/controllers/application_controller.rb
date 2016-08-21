@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-  before_action :authenticate_user!, only: [:update, :destroy, :new, :edit]
+  before_action :authenticate_user!, only: [:create, :update, :destroy, :new, :edit]
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
