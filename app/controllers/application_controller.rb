@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
       if request.xhr?
         render json: {msg: "You don't have permission to do it"}, status: 403            
       else
-        redirect_to root_path
+        redirect_to root_path, notice: 'you are not allowed to do it'
       end
     end
 

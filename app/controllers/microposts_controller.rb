@@ -43,6 +43,7 @@ class MicropostsController < ApplicationController
   # PATCH/PUT /microposts/1
   # PATCH/PUT /microposts/1.json
   def update
+    authorize @micropost
     respond_to do |format|
       if @micropost.update(micropost_params)
          @micropost.content1 = @micropost.content
@@ -62,6 +63,7 @@ class MicropostsController < ApplicationController
   # DELETE /microposts/1
   # DELETE /microposts/1.json
   def destroy
+    authorize @micropost
     @micropost.destroy
     respond_to do |format|
       format.html { redirect_to product_path(:id => @micropost.product.id), notice: 'Micropost was successfully destroyed.' }
