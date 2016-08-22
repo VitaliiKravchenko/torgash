@@ -19,6 +19,7 @@ class MicropostsController < ApplicationController
 
   # GET /microposts/1/edit
   def edit
+    authorize @micropost  
     @micropost.content = @micropost.content1
   end
 

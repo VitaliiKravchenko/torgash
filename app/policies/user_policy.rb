@@ -1,7 +1,23 @@
 class UserPolicy < ApplicationPolicy
-  class Scope < Scope
-    def resolve
-      scope
-    end
+
+  def initialize(user, resource)
+    @user = user
+    @resource = resource
+  end
+
+  def create?
+    true
+  end
+
+  def edit?
+    ["admin", "moderator"].include?(@user.role) || @user.id == @resource.id
+  end
+
+  def update?
+    ["admin", "moderator"].include?(@user.role) || @user.id == @resource.id
+  end
+  
+  def destroy?
+    ["admin", "moderator"].include?(@user.role) || @user.id == @resource.id
   end
 end

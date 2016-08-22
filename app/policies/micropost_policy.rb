@@ -1,11 +1,5 @@
 class MicropostPolicy < ApplicationPolicy
-#  class Scope < Scope
-#    def resolve
-#      scope
-#    end
-#  end
- attr_reader :user, :micropost   
-
+  
   def initialize(user, micropost)
     @user = user
     @micropost = micropost
@@ -15,7 +9,15 @@ class MicropostPolicy < ApplicationPolicy
     true
   end
 
+  def edit?
+    ["admin", "moderator"].include?(@user.role) || @user.id == @micropost.user_id
+  end
+
   def update?
+    ["admin", "moderator"].include?(@user.role) || @user.id == @micropost.user_id
+  end
+  
+  def destroy?
     ["admin", "moderator"].include?(@user.role) || @user.id == @micropost.user_id
   end
 end
