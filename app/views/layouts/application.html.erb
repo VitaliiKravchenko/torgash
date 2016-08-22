@@ -18,6 +18,8 @@
   <% if current_user %>
     Signed in as <strong><%= current_user.name %></strong>!
     <%= link_to "Log out", log_out_path %> 
+    <li><%= link_to "Show your profile", user_path(current_user)  %></li>
+    <li><%= link_to "Edit your profile", edit_user_path(current_user)  %></li>
   <% else %>
     <%= link_to "Log in with Facebook", "/auth/facebook", id: "sign_in" %> or <%= link_to "Log in with password", log_in_path %> or
 
