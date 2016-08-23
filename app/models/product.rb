@@ -5,4 +5,9 @@ class Product < ActiveRecord::Base
   validates :user_id, presence: true
   validates :title, presence: true
   validates :price, presence: true
+  def search_data
+      attributes.merge(
+        user_name: user(&:name)
+      )
+    end
 end

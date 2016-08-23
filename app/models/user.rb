@@ -17,6 +17,11 @@ class User < ActiveRecord::Base
   geocoded_by :city   # can also be an IP address
   after_validation :geocode          # auto-fetch coordinates
   before_save :encrypt_password
+  after_commit :reindex_product
+
+  def reindex_product
+    Product.reindex
+  end
   def self.from_omniauth(auth)
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         user.provider = auth.provider
