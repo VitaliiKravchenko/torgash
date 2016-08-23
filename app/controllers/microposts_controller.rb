@@ -26,6 +26,7 @@ class MicropostsController < ApplicationController
   # POST /microposts
   # POST /microposts.json
   def create
+    @product = Product.find(micropost_params[:product_id])
     @micropost = current_user.microposts.build(micropost_params)
     @micropost.content1 = @micropost.content
     @micropost.content = @micropost.content.gsub(/[<>&\/]/, '<' => '&lt;', '>' => '&gt;', '&' => '&amp;', '/' => '&frasl;') 
@@ -33,6 +34,7 @@ class MicropostsController < ApplicationController
     respond_to do |format|
       if @micropost.save
         format.html { redirect_to  request.referer, notice: 'Micropost was successfully created.' }
+        format.js {}
         format.json { render :show, status: :created, location: @micropost }
       else
         format.html { render :new }
@@ -65,9 +67,11 @@ class MicropostsController < ApplicationController
   # DELETE /microposts/1.json
   def destroy
     authorize @micropost
+    @product = Product.find(Micropost.find(params[:id]).product_id)
     @micropost.destroy
     respond_to do |format|
       format.html { redirect_to product_path(:id => @micropost.product.id), notice: 'Micropost was successfully destroyed.' }
+      format.js {}
       format.json { head :no_content }
     end
   end
