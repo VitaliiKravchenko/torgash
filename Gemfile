@@ -33,6 +33,7 @@ gem 'meta_request'
 gem 'pundit'
 gem 'RedCloth'
 gem 'bootstrap-sass'
+gem 'searchkick'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
