@@ -1,17 +1,8 @@
 class User < ActiveRecord::Base
 #  has_secure_password
-  has_many :products
-  has_many :microposts
-  validates :login, presence: true
-  validates :full_name, presence: true
-  validates :birthday, presence: true
-  validates :email, presence: true
-  validates :country, presence: true
-  validates :state, presence: true
-  validates :name, presence: true
-  validates :city, presence: true
-  validates :zip, presence: true
-  validates :password, presence: true
+  has_many :products, dependent: :destroy
+  has_many :microposts, dependent: :destroy
+  validates :login, :full_name,:birthday,:email,:country,:state,:name,:city,:zip,:password, presence: true, if: "provider.nil?"
 
   attr_accessor :password, :password_confirmation
   geocoded_by :city   # can also be an IP address
