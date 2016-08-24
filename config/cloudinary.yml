@@ -1,0 +1,12 @@
+development:
+  cloud_name: svechki
+  api_key: '233871345473111'
+  api_secret: JLcGEpNMUxbs7q7J1eJOGDqgIl0
+production:
+  cloud_name: svechki
+  api_key: '233871345473111'
+  api_secret: JLcGEpNMUxbs7q7J1eJOGDqgIl0
+test:
+  cloud_name: svechki
+  api_key: '233871345473111'
+  api_secret: JLcGEpNMUxbs7q7J1eJOGDqgIl0
