@@ -34,6 +34,8 @@ gem 'pundit'
 gem 'RedCloth'
 gem 'bootstrap-sass'
 gem 'searchkick'
+gem 'carrierwave'
+gem 'cloudinary'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

@@ -28,7 +28,7 @@
       <tr>
         <td><%= product.user.name %></td>
         <td><%= product.title %></td>
-        <td><%=truncate(product.description, :length => 163, :separator => ' ') %></td>
+        <td><%=truncate(product.description.html_safe, :length => 163, :separator => ' ') %></td>
         <td><%= product.image_url %></td>
         <td><%= product.price %></td>
         <td><%= link_to 'Show', product %></td>

@@ -24,12 +24,16 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     authorize @product
+    @product.description = @product.description1
   end
 
   # POST /products
   # POST /products.json
   def create
     @product = current_user.products.build(product_params)
+    @product.description1 = @product.description 
+    @product.description = @product.description.gsub(/[<>&\/]/, '<' => '&lt;', '>' => '&gt;', '&' => '&amp;', '/' => '&frasl;') 
+    @product.description = RedCloth.new(@product.description).to_html
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -47,6 +51,10 @@ class ProductsController < ApplicationController
     authorize @product
     respond_to do |format|
       if @product.update(product_params)
+         @product.description1 = @product.description 
+         @product.description = @product.description.gsub(/[<>&\/]/, '<' => '&lt;', '>' => '&gt;', '&' => '&amp;', '/' => '&frasl;') 
+         @product.description = RedCloth.new(@product.description).to_html
+         @product.save
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
