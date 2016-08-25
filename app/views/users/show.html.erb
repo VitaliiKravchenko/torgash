@@ -44,9 +44,10 @@
    var latitude = <%= @user.latitude %>;
    var longitude = <%= @user.longitude %>;
 </script>
-
-<% if ["admin", "moderator"].include?(current_user.role) || current_user.id == @user.id%> 
-<%= link_to 'Edit', edit_user_path(@user) %> 
+<% if current_user %>
+  <% if ["admin", "moderator"].include?(current_user.role) || current_user.id == @user.id%> 
+    <%= link_to 'Edit', edit_user_path(@user) %> 
+  <% end %>
 <% end %>
 |
 <%= link_to 'Back', users_path %>

@@ -17,7 +17,7 @@
 
 <p>
   <strong>Image url:</strong>
-  <% unless @product.image_url.nil? %><%= image_tag @product.image_url %><br /><% end %>
+  <% unless @product.image_url.nil? %><%= image_tag @product.image_url(:display) %><br /><% end %>
   <%= @product.image_url %>
 </p>
 
