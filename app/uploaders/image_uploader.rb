@@ -1,17 +1,34 @@
 # encoding: utf-8
 
 class ImageUploader < CarrierWave::Uploader::Base
-  include Cloudinary::CarrierWave
+  
+  if Rails.env != "production"
+    include CarrierWave::MiniMagick
+    storage :file
+    def store_dir
+      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    end
+    version :display do
+      process :resize_to_fill => [400, 400, :north]
+    end
 
-  version :display do
-    process :eager => true
-    process :resize_to_fill => [400, 400, :north]
-  end
+    version :thumbnail do 
+      process :resize_to_fit => [100, 100]
+    end
+  else
+    include Cloudinary::CarrierWave
+    version :display do
+      process :eager => true
+      process :resize_to_fill => [400, 400, :north]
+    end
 
-  version :thumbnail do 
-    process :eager => true
-    process :resize_to_fit => [100, 100]
+    version :thumbnail do 
+      process :eager => true
+      process :resize_to_fit => [100, 100]
+    end
   end
+  
+  
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick

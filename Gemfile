@@ -36,6 +36,7 @@ gem 'bootstrap-sass'
 gem 'searchkick'
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'mini_magick'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
