@@ -15,4 +15,8 @@
 /log/*
 !/log/.keep
 /tmp
-/public/uploads/product/image/*
+/public/uploads/product/*
+/public/uploads/product/*/*
+/public/uploads/product/*/*/*
+/public/uploads/product/*/*/*/*
+/public/uploads/product/*/*/*/*/*
