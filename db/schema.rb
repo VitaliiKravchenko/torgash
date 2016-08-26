@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824181249) do
+ActiveRecord::Schema.define(version: 20160826082601) do
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20160824181249) do
     t.string   "password_hash"
     t.string   "password_salt"
     t.string   "role"
+    t.string   "token"
   end
 
 end

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'forgot_passwords/new'
+
+  get 'forgot_passwords/create'
+
   resources :microposts
   resources :products
   get 'auth/:provider/callback', to: 'sessions#create'
@@ -8,12 +12,18 @@ Rails.application.routes.draw do
   resources :sessions
   resource :home, only: [:show]
 
-get "log_out" => "sessions#destroy", :as => "log_out"
-get "log_in" => "sessions#new", :as => "log_in"
-get "sign_up" => "users#new", :as => "sign_up"
-root :to => "products#index"
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "log_in" => "sessions#new", :as => "log_in"
+  get "sign_up" => "users#new", :as => "sign_up"
+  root :to => "products#index"
 
   resources :users
+  
+  get 'forgot_passwords', to: 'forgot_passwords#new'
+  resources :forgot_passwords, only: [:create]
+  resources :password_resets, only: [:show, :create]
+  get 'forgot_password_confirmation', to: 'forgot_passwords#confirm'
+  get 'expired_token', to: 'password_resets#expired_token'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
