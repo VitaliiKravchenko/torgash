@@ -4,8 +4,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    if params[:query].present?
-      @products = Product.search(params[:query])
+    if params[:search].present?
+      @products = Product.search(params[:search])
     else
       @products = Product.all
     end
