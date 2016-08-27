@@ -5,14 +5,18 @@ class User < ActiveRecord::Base
   validates :login, :full_name,:birthday,:email,:country,:state,:name,:city,:zip,:password, presence: true, if: "provider.nil?"
 
   attr_accessor :password, :password_confirmation
-  geocoded_by :city   # can also be an IP address
+  geocoded_by :address   # can also be an IP address
   after_validation :geocode          # auto-fetch coordinates
   before_save :encrypt_password
-  after_commit :reindex_product
+#  after_commit :reindex_product
 
-  def reindex_product
-    Product.reindex
+  def address
+    [country, state, city].compact.join(', ')
   end
+
+#  def reindex_product
+#    Product.reindex
+#  end
   def self.from_omniauth(auth)
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         user.provider = auth.provider

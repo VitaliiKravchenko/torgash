@@ -27,6 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 gem "bcrypt-ruby", :require => "bcrypt"
 gem 'geocoder'
+#gem 'jquery-turbolinks'
 gem 'omniauth-facebook', '~> 1.4.1'
 
 gem 'meta_request'
