@@ -4,6 +4,11 @@
   <strong>Owner:</strong>
   <%= @product.user.name %>
 </p>
+<% if @product.user_id != current_user.id %>
+     <div class="item">
+    <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: @product.user_id), method: 'post'%>
+ </div>
+  <% end %>
 
 <p>
   <strong>Title:</strong>

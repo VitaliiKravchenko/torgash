@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'forgot_passwords/new'
 
   get 'forgot_passwords/create'
@@ -24,6 +25,10 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:show, :create]
   get 'forgot_password_confirmation', to: 'forgot_passwords#confirm'
   get 'expired_token', to: 'password_resets#expired_token'
+
+  resources :conversations do
+    resources :messages
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
