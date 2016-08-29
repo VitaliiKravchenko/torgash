@@ -44,6 +44,9 @@
    var latitude = <%= @user.latitude %>;
    var longitude = <%= @user.longitude %>;
 </script>
+<% content_for :javascript do %>
+  <%= javascript_include_tag 'map/gmaps.js' %>
+<% end %>
 <% if current_user %>
   <% if ["admin", "moderator"].include?(current_user.role) || current_user.id == @user.id%> 
     <%= link_to 'Edit', edit_user_path(@user) %> 
