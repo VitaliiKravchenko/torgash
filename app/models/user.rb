@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
 #  has_secure_password
   has_many :products, dependent: :destroy
   has_many :microposts, dependent: :destroy
+  has_many :conversations, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  
   validates :login, :full_name,:birthday,:email,:country,:state,:name,:city,:zip,:password, presence: true, if: "provider.nil?"
 
   attr_accessor :password, :password_confirmation
