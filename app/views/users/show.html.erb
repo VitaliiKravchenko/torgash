@@ -39,11 +39,13 @@
   <strong>Zip:</strong>
   <%= @user.zip %>
 </p>
-<% if @user.id != current_user.id %>
-     <div class="item">
-    <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post'%>
- </div>
+<% if current_user %>
+  <% if @user.id != current_user.id %>
+    <div class="item">
+      <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post'%>
+    </div>
   <% end %>
+<% end %>
 
 <script>
    var latitude = <%= @user.latitude %>;
@@ -76,7 +78,7 @@
   <tbody>
     <% @user.products.each do |product| %>
       <tr>
-        <td><%= product.title %></td>
+        <td><%=link_to product.title, product_path %></td>
         <td><%= product.description %></td>
       </tr>
     <% end %>

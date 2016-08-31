@@ -4,11 +4,13 @@
   <strong>Owner:</strong>
   <%= @product.user.name %>
 </p>
-<% if @product.user_id != current_user.id %>
-     <div class="item">
-    <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: @product.user_id), method: 'post'%>
- </div>
+<% if current_user %>
+  <% if @product.user_id != current_user.id %>
+    <div class="item">
+      <%= link_to 'Message me!', conversations_path(sender_id: current_user.id, recipient_id: @product.user_id), method: 'post'%>
+    </div>
   <% end %>
+<% end %>
 
 <p>
   <strong>Title:</strong>
@@ -36,7 +38,7 @@
 <div id="product">
   <%= render @product %>
 </div>
-
+<% if current_user %>
 <%= form_for(Micropost.new, remote: true) do |f| %>
   <%= f.hidden_field :product_id, :value => @product.id %>
   <div class="field">
@@ -46,4 +48,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+<% end %>
 <% end %>
