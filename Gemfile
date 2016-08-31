@@ -25,7 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem "bcrypt-ruby", :require => "bcrypt"
+gem "bcrypt", :require => "bcrypt"
 gem 'geocoder'
 #gem 'jquery-turbolinks'
 gem 'omniauth-facebook', '~> 1.4.1'
@@ -48,6 +48,10 @@ gem 'seed_dump'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rails-controller-testing'
+  gem 'minitest-reporters'
+  gem 'guard'
+  gem 'guard-minitest'
 end
 
 group :development do
@@ -56,5 +60,7 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'listen'
+  gem 'spring-watcher-listen'
 end
 
