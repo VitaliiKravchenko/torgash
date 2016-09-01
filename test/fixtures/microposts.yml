@@ -2,8 +2,8 @@
 
 one:
   content: MyText
-  user_id: 
-  product_id: 
+  user_id: 1 
+  product_id: 1 
 
 two:
   content: MyText
