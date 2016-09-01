@@ -18,6 +18,7 @@ admin:
   password_salt: "$2a$10$X5BPUQnnt1Q9keEczhxn5O"
 
 other:
+  id: 2
   login: "other"
   full_name: "other"
   birthday: "10.04.1988"

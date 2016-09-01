@@ -1,8 +1,15 @@
 require 'test_helper'
 
 class MessagesControllerTest < ActionController::TestCase
+  setup do
+    @user = users(:admin)
+    @other_user = users(:other)
+    @conversation = conversations(:one)
+    @message = messages(:one)
+  end
+
   test "should get index" do
-    get :index
+    get :index, :format => 'json'
     assert_response :success
   end
 
