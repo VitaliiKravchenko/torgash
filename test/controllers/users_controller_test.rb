@@ -2,7 +2,8 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
   setup do
-    @user = users(:one)
+    @user = users(:admin)
+    @current_user = @user
   end
 
   test "should get index" do
@@ -18,28 +19,31 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should create user" do
     assert_difference('User.count') do
-      post :create, user: { birthday: @user.birthday, city: @user.city, country: @user.country, email: @user.email, full_name: @user.full_name, login: @user.login, password: 'secret', password_confirmation: 'secret', state: @user.state, zip: @user.zip }
+      post :create, user: {name: @user.name, role: @user.role, birthday: @user.birthday, city: @user.city, country: @user.country, email: @user.email, full_name: @user.full_name, login: @user.login, password: 'admin', password_confirmation: 'admin', state: @user.state, zip: @user.zip }
     end
 
     assert_redirected_to user_path(assigns(:user))
   end
 
   test "should show user" do
-    get :show, id: @user
+    get :show, :format => 'json', id: @user
     assert_response :success
   end
 
   test "should get edit" do
+    session[:user_id] = @user.id
     get :edit, id: @user
     assert_response :success
   end
 
   test "should update user" do
-    patch :update, id: @user, user: { birthday: @user.birthday, city: @user.city, country: @user.country, email: @user.email, full_name: @user.full_name, login: @user.login, password: 'secret', password_confirmation: 'secret', state: @user.state, zip: @user.zip }
+    session[:user_id] = @user.id
+    patch :update, id: @user, user: {  name: @user.name, role: @user.role, birthday: @user.birthday, city: @user.city, country: @user.country, email: @user.email, full_name: @user.full_name, login: @user.login, password: 'admin', password_confirmation: 'admin', state: @user.state, zip: 111111 }
     assert_redirected_to user_path(assigns(:user))
   end
 
   test "should destroy user" do
+    session[:user_id] = @user.id
     assert_difference('User.count', -1) do
       delete :destroy, id: @user
     end
