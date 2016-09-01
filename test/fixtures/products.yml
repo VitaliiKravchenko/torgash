@@ -4,6 +4,7 @@ one:
   title: MyString
   description: MyText
   image_url: MyString
+  user_id: 1
   price: 9.99
 
 two:

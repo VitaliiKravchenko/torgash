@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 admin:
+  id: 1
   login: "admin"
   full_name: "admin"
   birthday: "10.04.1988"
@@ -13,5 +14,20 @@ admin:
   longitude: 30.95615
   name: "admin"
   role: "admin" 
+  password_hash: "$2a$10$X5BPUQnnt1Q9keEczhxn5OsNH.RZuypNPxFF/nSmtQ0DDAbdjEbgq"
+  password_salt: "$2a$10$X5BPUQnnt1Q9keEczhxn5O"
+
+other:
+  login: "other"
+  full_name: "other"
+  birthday: "10.04.1988"
+  email: "other@other"
+  country: "Ukraine"
+  state: "Київська"
+  city: "Бориспіль"
+  zip: "08304"
+  latitude: 50.3482
+  longitude: 30.95615
+  name: "other"
   password_hash: "$2a$10$X5BPUQnnt1Q9keEczhxn5OsNH.RZuypNPxFF/nSmtQ0DDAbdjEbgq"
   password_salt: "$2a$10$X5BPUQnnt1Q9keEczhxn5O"

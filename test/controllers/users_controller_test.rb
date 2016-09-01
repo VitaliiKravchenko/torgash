@@ -3,7 +3,7 @@ require 'test_helper'
 class UsersControllerTest < ActionController::TestCase
   setup do
     @user = users(:admin)
-    @current_user = @user
+    @other = users(:other)
   end
 
   test "should get index" do
@@ -49,5 +49,14 @@ class UsersControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to users_path
+  end
+
+  test "should not destroy other user" do
+    session[:user_id] = @other.id
+    assert_difference('User.count', 0) do
+      delete :destroy, id: @user
+    end
+
+    assert_redirected_to root_path
   end
 end
