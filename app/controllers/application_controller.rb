@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   before_action :authenticate_user!, only: [:create, :update, :destroy, :new, :edit]
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+ 
 
   def current_user
     if session[:user_id]
@@ -38,6 +40,10 @@ class ApplicationController < ActionController::Base
    #       redirect_to root_path
   #      end
       end
+    end
+ 
+    def record_not_found
+      render plain: "404 Not Found", status: 404
     end
 
 end
