@@ -1,25 +1,20 @@
 class User < ActiveRecord::Base
-#  has_secure_password
   has_many :products, dependent: :destroy
   has_many :microposts, dependent: :destroy
   has_many :conversations,:foreign_key => :sender_id, dependent: :destroy
-#  has_many :messages, dependent: :destroy
   
-  validates :login, :full_name,:birthday,:email,:country,:state,:name,:city,:zip,:password, presence: true, if: "provider.nil?"
+  validates :login, :full_name,:birthday,:country,:state,:name,:city,:zip,:password, presence: true, length: { in: 1..50 }, if: "provider.nil?"
 
   attr_accessor :password, :password_confirmation
   geocoded_by :address   # can also be an IP address
   after_validation :geocode          # auto-fetch coordinates
   before_save :encrypt_password
-#  after_commit :reindex_product
-
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, length: { in: 3..100}, format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensetive: false}
   def address
     [country, state, city].compact.join(', ')
   end
 
-#  def reindex_product
-#    Product.reindex
-#  end
   def self.from_omniauth(auth)
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         user.provider = auth.provider
