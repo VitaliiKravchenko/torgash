@@ -36,6 +36,48 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test "email address should be unique" do
+    duplicate_user = @user1.dup
+    duplicate_user.email = @user1.email.upcase
+    @user1.save
+    duplicate_user.save
+    assert_not duplicate_user.valid?
+  end  
 
+  test "password should be present" do
+    @user1.password = @user1.password_confirmation = " " * 4
+    assert_not @user1.valid?
+  end
+
+  test "password should have minimum length" do
+    @user1.password = @user1.password_confirmation = "bl"
+    assert_not @user1.valid?
+  end
+
+  test "user product should be destroyed with user" do
+    @user1.save
+    @user1.products.create!(title: 1, description: 1, price: 1)
+    assert_difference 'Product.count', -1 do
+      @user1.destroy
+    end
+  end 
+  
+  test "user conversation should be destroyed with user" do
+    @user1.save
+    @user1.conversations.create!(sender_id: 1, recipient_id: 2)    
+    @user1.conversations.first.messages.create!(body: 1, conversation_id: 1, user_id: 1)
+    assert_difference 'Conversation.count', -1 do
+      @user1.destroy
+    end
+  end 
+
+  test "user message should be destroyed with user" do
+    @user1.save
+    @user1.conversations.create!(sender_id: 1, recipient_id: 2)    
+    @user1.conversations.first.messages.create!(body: 1, conversation_id: 1, user_id: 1)
+    assert_difference 'Message.count', -1 do
+      @user1.destroy
+    end
+  end 
 
 end

@@ -5,7 +5,7 @@ admin:
   login: "admin"
   full_name: "admin"
   birthday: "10.04.1988"
-  email: "admin@ukr.net"
+  email: 'admin@admin.net'
   country: "Ukraine"
   state: "Київська"
   city: "Бориспіль"
