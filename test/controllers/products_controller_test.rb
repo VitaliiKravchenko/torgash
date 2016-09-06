@@ -52,4 +52,9 @@ class ProductsControllerTest < ActionController::TestCase
 
     assert_redirected_to products_path
   end
+
+  test "get root path" do
+    get :index
+    assert_response :success
+  end
 end

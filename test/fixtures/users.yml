@@ -5,7 +5,7 @@ admin:
   login: "admin"
   full_name: "admin"
   birthday: "10.04.1988"
-  email: 'admin@admin.net'
+  email: 'admin@admin.ua'
   country: "Ukraine"
   state: "Київська"
   city: "Бориспіль"
@@ -14,8 +14,8 @@ admin:
   longitude: 30.95615
   name: "admin"
   role: "admin" 
-  password_hash: "$2a$10$X5BPUQnnt1Q9keEczhxn5OsNH.RZuypNPxFF/nSmtQ0DDAbdjEbgq"
-  password_salt: "$2a$10$X5BPUQnnt1Q9keEczhxn5O"
+  password_salt: <%= salt = BCrypt::Engine.generate_salt %>
+  password_hash: <%= BCrypt::Engine.hash_secret('admin', salt)%>
 
 other:
   id: 2
