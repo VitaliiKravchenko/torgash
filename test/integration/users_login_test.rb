@@ -21,8 +21,10 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
   test "login with valid information" do
     get log_in_path
-    post log_in_path, email: "admin@admin.ua", password: "admin"
+    post_via_redirect log_in_path, email: "admin@admin.ua", password: "admin"
     assert_redirected_to root_url
+#    follow_redirect!, format: :json
+#    assert_template 'products/index'
   end
 
 

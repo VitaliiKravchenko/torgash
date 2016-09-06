@@ -19,16 +19,18 @@ class ProductTest < ActiveSupport::TestCase
 
   test "product without price should be invalid" do
     @product.price = nil
-    assert @product.valid?
+    assert_not @product.valid?
   end
 
   test "product description more than 2000 char  should be invalid" do
     @product.description = "a" * 2001
-    assert @product.valid?
+    assert_not @product.valid?
   end
 
   test "product micropost should be deleted with product" do
-    @micropost = @product.microposts.build(content: 1, user_id: 1)
+    @micropost = @product.microposts.build(content: 1, user_id: @user.id)
+    @micropost.save!
+    assert @micropost.valid?
     assert_difference 'Micropost.count', -1 do
       @product.destroy
     end
