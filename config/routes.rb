@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :sessions
   resource :home, only: [:show]
 
-  get "log_out" => "sessions#destroy", :as => "log_out"
+  delete "log_out" => "sessions#destroy"#, :as => "log_out"
   get "log_in" => "sessions#new"
   post "log_in" => "sessions#create"
   get "sign_up" => "users#new", :as => "sign_up"
