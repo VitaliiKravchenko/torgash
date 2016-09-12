@@ -38,6 +38,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_text 'Product comments'
     assert_text @product.description
     assert_current_path  product_path(@product)
+    click_link 'Edit'
     
 #    page.has_content?('bla bla')
 #    assert_select "a[href=?]", log_in_path, count: 1
