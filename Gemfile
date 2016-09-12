@@ -53,6 +53,7 @@ group :development, :test do
   gem 'guard'
   gem 'guard-minitest'
   gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :development do

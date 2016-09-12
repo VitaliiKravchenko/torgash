@@ -5,7 +5,8 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:admin)
-    @product = @user.products.create!(title: 'test product', description: 1, price: 1)
+    #@product = @user.products.create!(title: 'test product', description: 1, price: 1)
+    @product = products(:one)
   end
 
 #  test "login with invalid information" do
@@ -17,7 +18,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 #    get root_path, :format => 'json'
 #    assert flash.empty?
 #  end
-
+  Capybara.current_driver = :selenium
   test "login with valid information" do
 #    get root_url, :format => 'json'
 #    json_response = JSON.parse(response.body) 
@@ -38,7 +39,18 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_text 'Product comments'
     assert_text @product.description
     assert_current_path  product_path(@product)
-    click_link 'Edit'
+ #   click_link 'Edit'
+ #   assert_text 'Editing Product'
+ #   click_link 'Show'
+    assert_current_path product_path(@product)
+    assert @product.present?
+accept_confirm do
+  click_link 'Delete product'
+end
+assert_text "Listing Products"
+#    click_link 'Destroy'
+#    click_link_or_button 'OK'
+#    assert @product.present?
     
 #    page.has_content?('bla bla')
 #    assert_select "a[href=?]", log_in_path, count: 1
@@ -58,7 +70,6 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
 #    assert_select "a[href=?]", log_out_path
 
   end
-
 
 
 end

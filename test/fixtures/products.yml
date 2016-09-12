@@ -2,14 +2,14 @@
 
 one:
   id: 1
-  title: "MyString"
-  description: "MyText"
+  title: "med"
+  description: "tasty"
   image_url: MyString
   user_id: 1
   price: 9.99
 
 two:
-  title: MyString
-  description: MyText
+  title: "salo"
+  description: "fat"
   image_url: MyString
   price: 9.99
