@@ -7,5 +7,5 @@ spawn /home/strela/sites/test2.sh
 expect "Username for 'https://github.com':"
 send "vitaliikravchenko\n"
 expect "Password for 'https://vitaliikravchenko@github.com':"
-send "v9311280\n"
+send "v9311280\r"
 
