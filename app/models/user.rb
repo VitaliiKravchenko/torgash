@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  paginates_per 2
   has_many :products, :foreign_key => :user_id, dependent: :destroy
   has_many :microposts, dependent: :destroy
   has_many :conversations,:foreign_key => :sender_id, dependent: :destroy

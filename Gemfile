@@ -39,6 +39,7 @@ gem 'carrierwave'
 gem 'cloudinary'
 gem 'mini_magick'
 gem 'seed_dump'
+gem 'kaminari'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

@@ -29,7 +29,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_no_text 'Log in with'
   end
 
-=begin
+begin
   test "login with valid information via mail and password" do
     Capybara.current_driver = :selenium
     visit( '/')
@@ -77,7 +77,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     click_link 'Log out'
     assert_text 'Log in with'
   end
-=end
+end
 
 end
 
