@@ -4,8 +4,8 @@
 spawn /home/strela/sites/test2.sh
 #spawn ""
 
-expect "Username"
-send "vitaliikravchenko"
-expect "Password"
-send "v9311280"
+expect \"Username\"
+send \"vitaliikravchenko\"
+expect \"Password\"
+send \"v9311280\"
 
