@@ -5,6 +5,10 @@ require 'minitest/reporters'
 require 'capybara/rails'
 Minitest::Reporters.use!
 
+require 'database_cleaner'
+
+DatabaseCleaner.strategy = :transaction  
+
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
@@ -21,5 +25,16 @@ class ActionDispatch::IntegrationTest
   def teardown
     Capybara.reset_sessions!
     Capybara.use_default_driver
+    DatabaseCleaner.clean
   end
 end
+
+class ActiveRecord::Base  
+  mattr_accessor :shared_connection
+  @@shared_connection = nil
+
+  def self.connection
+    @@shared_connection || retrieve_connection
+  end
+end  
+ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection  

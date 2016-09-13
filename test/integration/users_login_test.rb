@@ -34,6 +34,15 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_text('Log out')
     assert_text('Signed in as admin')
     assert_text 'Listing Products'
+
+    click_link 'New Product'
+    fill_in 'Title', :with => 'matras'
+    fill_in 'Description', :with => 'pocket spring'
+    fill_in 'Price', :with => 3851
+    click_button 'Create Product'
+    click_link 'Products' 
+
+
     assert_text(@product.title)
     click_link @product.title
     assert_text 'Product comments'

@@ -54,6 +54,7 @@ group :development, :test do
   gem 'guard-minitest'
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'database_cleaner'
 end
 
 group :development do
