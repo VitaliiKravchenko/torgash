@@ -1,6 +1,6 @@
 #!/usr/bin/expect -f
 
-spawn /home/strela/sites/torgash/test2.sh [lindex $argv 0]; 
+spawn /home/strela/sites/torgash/.to_github_git.sh [lindex $argv 0]; 
 
 expect "Username for 'https://github.com':"
 send "vitaliikravchenko\n"
