@@ -38,3 +38,17 @@ class ActiveRecord::Base
   end
 end  
 ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection  
+def mock_auth_hash_facebook
+    OmniAuth.config.mock_auth[:facebook] = {
+        provider: 'facebook',
+        uid: '1073948082692185',
+        info: {
+            name: 'Vitaliy Kravchenko',
+        },
+        credentials: {
+            token: 'mock_token',
+            expires_at: 2428232400,
+            secret: 'mock_secret'
+        }
+    }
+end

@@ -12,4 +12,5 @@ two:
   title: "salo"
   description: "fat"
   image_url: MyString
+  user_id: 2
   price: 9.99

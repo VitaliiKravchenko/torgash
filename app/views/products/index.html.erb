@@ -26,9 +26,7 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-  <% if product.user %>
         <td><%= product.user.name %></td>
-  <% end %>
         <td><%=link_to product.title, product %></td>
         <td><%=truncate(product.description.html_safe, :length => 163, :separator => ' ') %></td>
         <td><%=image_tag product.image_url(:thumbnail) %></td>

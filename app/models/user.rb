@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :products, dependent: :destroy
+  has_many :products, :foreign_key => :user_id, dependent: :destroy
   has_many :microposts, dependent: :destroy
   has_many :conversations,:foreign_key => :sender_id, dependent: :destroy
   
@@ -19,12 +19,15 @@ class User < ActiveRecord::Base
   end
 
   def self.from_omniauth(auth)
-      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-        user.provider = auth.provider
-        user.uid = auth.uid
-        user.name = auth.info.name
-        user.oauth_token = auth.credentials.token
-        user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      where(provider: auth[:provider], uid: auth[:uid]).first_or_create do |user|
+        user.provider = auth[:provider]
+        user.uid = auth[:uid]
+        @info = auth[:info]
+        user.name = @info[:name]
+        @credentials = auth[:credentials]
+        user.oauth_token = @credentials[:token]
+        #user.oauth_token = auth.credentials.token
+        user.oauth_expires_at = Time.at(@credentials[:expires_at])
         user.save!
       
        end

@@ -1,28 +1,37 @@
 require 'test_helper'
 
 class UsersLoginTest < ActionDispatch::IntegrationTest
-#  fixtures :users, :products  
 
   def setup
     @user = users(:admin)
-    #@product = @user.products.create!(title: 'test product', description: 1, price: 1)
     @product = products(:one)
+    OmniAuth.config.test_mode = true
   end
 
-#  test "login with invalid information" do
-#    get log_in_path
-#    assert_template 'sessions/new'
-#    post log_in_path, session: { email: "", password: ""}
-#    assert_template 'sessions/new'
-#    assert_not flash.empty?
-#    get root_path, :format => 'json'
-#    assert flash.empty?
-#  end
-  Capybara.current_driver = :selenium
-  test "login with valid information" do
-#    get root_url, :format => 'json'
-#    json_response = JSON.parse(response.body) 
-#    assert_template '/'
+  test "login with invalid information" do
+    get log_in_path
+    assert_template 'sessions/new'
+    post log_in_path, session: { email: "", password: ""}
+    assert_template 'sessions/new'
+    assert_not flash.empty?
+    get root_path, :format => 'json'
+    assert flash.empty?
+  end
+
+  test "login with facebook profile" do
+#    Capybara.current_driver = :selenium
+    visit '/'
+    assert_text 'Listing'
+    mock_auth_hash_facebook
+    click_link 'Log in with Facebook'
+    assert_text 'Listing' 
+    assert_text 'Log out'
+    assert_no_text 'Log in with'
+  end
+
+=begin
+  test "login with valid information via mail and password" do
+    Capybara.current_driver = :selenium
     visit( '/')
     assert_text('Listing')
     assert_text('Log in')
@@ -42,43 +51,33 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     click_button 'Create Product'
     click_link 'Products' 
 
-
     assert_text(@product.title)
     click_link @product.title
     assert_text 'Product comments'
     assert_text @product.description
     assert_current_path  product_path(@product)
- #   click_link 'Edit'
- #   assert_text 'Editing Product'
- #   click_link 'Show'
+    click_link('Edit', :href => edit_product_path(@product))
+    assert_text 'Editing Product'
+
+    fill_in 'Price', :with => 15
+    click_button 'Update Product'
     assert_current_path product_path(@product)
-    assert @product.present?
-accept_confirm do
-  click_link 'Delete product'
-end
-assert_text "Listing Products"
-#    click_link 'Destroy'
-#    click_link_or_button 'OK'
-#    assert @product.present?
-    
-#    page.has_content?('bla bla')
-#    assert_select "a[href=?]", log_in_path, count: 1
-#    assert_select 'title', "Torgash"
-#    get log_in_path, :format => 'json'
-#    post log_in_path, email: "admin@admin.ua", password: "admin", :format => 'json'
+    assert_text '15'
+    click_link('Edit', :href => edit_product_path(@product)) 
 
-#    assert_redirected_to root_url, xhr: true # :format => 'json'
-#    get root_url, xhr: true # :format => 'json'
-#    assert_template '/'
-#    assert_select "a[href=?]", log_in_path, count: 0
+    click_link 'Show'
+    assert_current_path product_path(@product)
+    #accept_confirm do
+      click_link 'Delete product'
+    #end
+    page.driver.browser.switch_to.alert.accept
+    assert_text "Listing Products"
+    assert_no_text @product.title
 
-#    delete log_out_path, :format => 'json'
-#    assert_redirected_to root_url
-
-#    assert_select "a[href=?]", log_in_path, count: 0
-#    assert_select "a[href=?]", log_out_path
-
+    click_link 'Log out'
+    assert_text 'Log in with'
   end
-
+=end
 
 end
+
