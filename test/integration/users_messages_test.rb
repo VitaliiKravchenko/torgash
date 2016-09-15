@@ -16,7 +16,8 @@ class UsersMessagesTest < ActionDispatch::IntegrationTest
     click_link 'Conversations'
     assert_text 'Mailbox'
     assert_text @other_user.name
-    click_link 'Message me!'
+#    click_link 'Message me!'
+    click_link('Message me!', :href => /conversations?recipient_id=#{@other_user.id}&sender_id=#{current_user.id}/)
   end
 
 
