@@ -53,11 +53,18 @@ def mock_auth_hash_facebook
     }
 end
 
-def log_in
+#def log_in
+#    visit( '/')
+#    click_link_or_button("Log in with password")
+#    fill_in 'Email', :with => 'admin@admin.ua'
+#    fill_in 'Password', :with => 'admin'
+#    click_button 'Log in'
+#end
+  
+def log_in(user, password)
     visit( '/')
     click_link_or_button("Log in with password")
-    fill_in 'Email', :with => 'admin@admin.ua'
-    fill_in 'Password', :with => 'admin'
+    fill_in 'Email', :with => user.email
+    fill_in 'Password', :with => password
     click_button 'Log in'
 end
-  

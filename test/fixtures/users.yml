@@ -16,8 +16,23 @@ admin:
   role: "admin" 
   password_salt: <%= salt = BCrypt::Engine.generate_salt %>
   password_hash: <%= BCrypt::Engine.hash_secret('admin', salt)%>
-#  password_hash: "$2a$10$c9/HklBnSdKp8.JOrHCzY.VrSdYCG8LeE.4rRMc17I9SIPjSc.TSO"
-#  password_salt: "$2a$10$c9/HklBnSdKp8.JOrHCzY."
+
+moderator:
+  id: 3
+  login: "moderator"
+  full_name: "moderator"
+  birthday: "10.04.1988"
+  email: 'moderator@moderator.ua'
+  country: "Ukraine"
+  state: "Київська"
+  city: "Бориспіль"
+  zip: "08304"
+  latitude: 50.3482
+  longitude: 30.95615
+  name: "moderator"
+  role: "moderator" 
+  password_salt: <%= salt = BCrypt::Engine.generate_salt %>
+  password_hash: <%= BCrypt::Engine.hash_secret('moderator', salt)%>
 
 other:
   id: 2
@@ -34,5 +49,3 @@ other:
   name: "other"
   password_salt: <%= salt = BCrypt::Engine.generate_salt %>
   password_hash: <%= BCrypt::Engine.hash_secret('other', salt)%>
-#  password_hash: "$2a$10$c9/HklBnSdKp8.JOrHCzY.VrSdYCG8LeE.4rRMc17I9SIPjSc.TSO"
-#  password_salt: "$2a$10$c9/HklBnSdKp8.JOrHCzY."

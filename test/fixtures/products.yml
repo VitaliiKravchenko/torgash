@@ -9,6 +9,7 @@ one:
   price: 9.99
 
 two:
+  id: 2
   title: "salo"
   description: "fat"
   image_url: MyString
