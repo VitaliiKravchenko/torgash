@@ -4,6 +4,7 @@ class UserCreateTest < ActionDispatch::IntegrationTest
 
   def setup
     @admin
+    OmniAuth.config.test_mode = true
   end
 
   test "Signup new user through form" do
@@ -26,8 +27,13 @@ class UserCreateTest < ActionDispatch::IntegrationTest
   end
 
   test "signup new user through facebook" do
-    
+    visit '/'
+    assert_text 'Listing'
+    mock_auth_hash_facebook
+    click_link 'Log in with Facebook'
+    assert_text 'Listing' 
+    assert_text 'Log out'
+    assert_no_text 'Log in with'
   end
-
 
 end 

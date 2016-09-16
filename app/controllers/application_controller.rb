@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   before_action :authenticate_user!, only: [:create, :update, :destroy, :new, :edit]
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  rescue_from ActionController::RoutingError, with:  :record_not_found
  
 
   def current_user
@@ -31,14 +32,8 @@ class ApplicationController < ActionController::Base
         if request.path == '/sign_up' 
         elsif request.path == '/log_in'
         else
-#        if request.xhr?
-#          render json: {msg: "Please Sign In"}, status: 403
-#          flash[:error] = "You must be logged in to access this section"            
       redirect_to root_path, notice: 'You must be logged to do it'
         end
- #       else
-   #       redirect_to root_path
-  #      end
       end
     end
  
