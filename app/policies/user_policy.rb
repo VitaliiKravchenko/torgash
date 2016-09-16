@@ -10,14 +10,14 @@ class UserPolicy < ApplicationPolicy
   end
 
   def edit?
-    ["admin", "moderator"].include?(@user.role) || @user.id == @resource.id
+    ["admin"].include?(@user.role) || @user.id == @resource.id
   end
 
   def update?
-    ["admin", "moderator"].include?(@user.role) || @user.id == @resource.id
+    ["admin"].include?(@user.role) || @user.id == @resource.id
   end
   
   def destroy?
-    ["admin", "moderator"].include?(@user.role) || @user.id == @resource.id
+    ["admin"].include?(@user.role) || @user.id == @resource.id
   end
 end

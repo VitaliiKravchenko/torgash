@@ -47,10 +47,14 @@
     <%= f.label :zip %><br>
     <%= f.text_field :zip %>
   </div>
-  <div class="field">
-    <%= f.label :role %><br>
-    <%= f.text_field :role %>
-  </div>
+  <% if current_user %>
+    <% if ["admin"].include?(current_user.role) || current_user.id == user.id%> 
+      <div class="field">
+        <%= f.label :role %><br>
+        <%= f.text_field :role %>
+      </div>
+    <% end %>
+  <% end %>
   <div class="field">
     <%= f.label :password %><br>
     <%= f.password_field :password %>

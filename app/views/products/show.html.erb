@@ -32,8 +32,13 @@
   <%= @product.price %>
 </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Delete product', @product, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% if current_user %>
+  <% if ["admin", "moderator"].include?(current_user.role) || current_user.id == @product.user_id %>
+    <%= link_to 'Edit', edit_product_path(@product) %> |
+    <%= link_to 'Delete product', @product, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+<% end %>
+
 <%= link_to 'Back', products_path %>
 
 <div id="product">
