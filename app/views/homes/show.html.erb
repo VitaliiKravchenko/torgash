@@ -1,0 +1,31 @@
+<h1>Home#show</h1>
+<p>Find me in app/views/home/show.html.erb</p>
+
+<section ng-app="account" ng-model="showDetails"
+  ng-init="showDetails = false">
+  <p>You currently owe: $123.45</p>
+  <button ng-click="showDetails = !showDetails">Show/Hide Details</button>
+  <ul ng-if="showDetails">
+    <li>Base fee: $120.00</li>
+    <li>Taxes: $3.45</li>
+  </ul>
+</section>
+<script>
+  var app = angular.module("account",[]);
+</script>
+
+
+
+<section>
+<p>You currently owe: $123.45</p>
+<button class="reveal-button">Show Details</button>
+<ul style="display: none" class="details">
+<li>Base fee: $120.00</li>
+<li>Taxes: $3.45</li>
+</ul>
+</section>
+<script>
+$(".reveal-button").click(function($event) {
+$(".details").toggle();
+});
+</script>
