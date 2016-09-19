@@ -1,18 +1,18 @@
-User.delete_all
-Product.delete_all
-Conversation.delete_all
-Message.delete_all
-Micropost.delete_all
-User.connection.execute("DELETE from sqlite_sequence where name = 'users'") 
-Product.connection.execute("DELETE from sqlite_sequence where name = 'products'")
-Conversation.connection.execute("DELETE from sqlite_sequence where name = 'conversations'")
-Message.connection.execute("DELETE from sqlite_sequence where name = 'messages'")
-Micropost.connection.execute("DELETE from sqlite_sequence where name = 'microposts'")
-#User.connection.execute('ALTER TABLE USERS AUTO_INCREMENT = 1')
-#Products.connection.execute('ALTER SEQUENCE products_id_seq RESTART WITH 1')
-#Conversation.connection.execute('ALTER SEQUENCE conversations_id_seq RESTART WITH 1')
-#Message.connection.execute('ALTER SEQUENCE messages_id_seq RESTART WITH 1')
-#Micropost.connection.execute('ALTER SEQUENCE microposts_id_seq RESTART WITH 1')
+User.destroy_all
+Product.destroy_all
+Conversation.destroy_all
+Message.destroy_all
+Micropost.destroy_all
+#User.connection.execute("DELETE from sqlite_sequence where name = 'users'") 
+#Product.connection.execute("DELETE from sqlite_sequence where name = 'products'")
+#Conversation.connection.execute("DELETE from sqlite_sequence where name = 'conversations'")
+#Message.connection.execute("DELETE from sqlite_sequence where name = 'messages'")
+#Micropost.connection.execute("DELETE from sqlite_sequence where name = 'microposts'")
+User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
+Product.connection.execute('ALTER SEQUENCE products_id_seq RESTART WITH 1')
+Conversation.connection.execute('ALTER SEQUENCE conversations_id_seq RESTART WITH 1')
+Message.connection.execute('ALTER SEQUENCE messages_id_seq RESTART WITH 1')
+Micropost.connection.execute('ALTER SEQUENCE microposts_id_seq RESTART WITH 1')
 User.create!([
   {login: "admin", full_name: "admin", birthday: "10.04.1988", email: "admin@admin.ua", country: "Ukraine", state: "Київська", city: "Бориспіль", zip: "08304", password: "admin", password_confirmation: "admin", latitude: 50.3482, longitude: 30.95615, provider: nil, uid: nil, name: "admin", oauth_token: nil, oauth_expires_at: nil, password_hash: "$2a$10$c9/HklBnSdKp8.JOrHCzY.VrSdYCG8LeE.4rRMc17I9SIPjSc.TSO", password_salt: "$2a$10$c9/HklBnSdKp8.JOrHCzY.", role: "admin", token: nil},
   {login: "moderator", full_name: "moderator", birthday: "10.04.1988", email: "moderator@moderator.ua", country: "moderator", state: "moderator", city: "moderator", zip: "2333", password: "moderator", password_confirmation: "moderator", name: "moderator", role: "moderator"},

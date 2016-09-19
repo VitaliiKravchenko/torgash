@@ -40,6 +40,8 @@ gem 'cloudinary'
 gem 'mini_magick'
 gem 'seed_dump'
 gem 'kaminari'
+gem 'pg'
+gem 'taps'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

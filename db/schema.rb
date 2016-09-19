@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160829091451) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "conversations", force: :cascade do |t|
     t.integer  "sender_id"
     t.integer  "recipient_id"
@@ -29,8 +32,8 @@ ActiveRecord::Schema.define(version: 20160829091451) do
     t.datetime "updated_at"
   end
 
-  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id"
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id"
+  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
@@ -41,8 +44,8 @@ ActiveRecord::Schema.define(version: 20160829091451) do
     t.string   "content1"
   end
 
-  add_index "microposts", ["product_id"], name: "index_microposts_on_product_id"
-  add_index "microposts", ["user_id"], name: "index_microposts_on_user_id"
+  add_index "microposts", ["product_id"], name: "index_microposts_on_product_id", using: :btree
+  add_index "microposts", ["user_id"], name: "index_microposts_on_user_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "title"
@@ -56,7 +59,7 @@ ActiveRecord::Schema.define(version: 20160829091451) do
     t.string   "image"
   end
 
-  add_index "products", ["user_id"], name: "index_products_on_user_id"
+  add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "login"
@@ -83,4 +86,7 @@ ActiveRecord::Schema.define(version: 20160829091451) do
     t.string   "token"
   end
 
+  add_foreign_key "microposts", "products"
+  add_foreign_key "microposts", "users"
+  add_foreign_key "products", "users"
 end
