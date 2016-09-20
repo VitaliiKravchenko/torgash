@@ -1,7 +1,6 @@
-<p id="notice"><%= notice %></p>
 
 <%= form_tag products_path, class: "form-inline", method: :get do%>
-  <%= text_field_tag :search, params[:search], class: "form-control" %>
+  <%= text_field_tag :search, params[:search], placeholder: "search", class: "form-control" %>
   <%= submit_tag "Search", class: "btn btn-primary" %>
   <% if params[:search].present? %>
     <%= link_to "clear", products_path %>
@@ -11,7 +10,7 @@
 
 <h1>Listing Products</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Product owner</th>

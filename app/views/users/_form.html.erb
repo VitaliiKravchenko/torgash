@@ -11,59 +11,57 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :login %><br>
     <%= f.text_field :login %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :Full_Name %><br>
     <%= f.text_field :full_name %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :birthday %><br>
     <%= f.text_field :birthday %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email %><br>
     <%= f.text_field :email %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :country %><br>
     <%= f.text_field :country %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :state %><br>
     <%= f.text_field :state %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :city %><br>
     <%= f.text_field :city %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :zip %><br>
     <%= f.text_field :zip %>
   </div>
   <% if current_user %>
     <% if ["admin"].include?(current_user.role) || current_user.id == user.id%> 
-      <div class="field">
+      <div class="form-group">
         <%= f.label :role %><br>
         <%= f.text_field :role %>
       </div>
     <% end %>
   <% end %>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password %><br>
     <%= f.password_field :password %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password_confirmation %><br>
     <%= f.password_field :password_confirmation %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.submit "OK",  class: "btn btn-primary btn-lg" %>
 <% end %>

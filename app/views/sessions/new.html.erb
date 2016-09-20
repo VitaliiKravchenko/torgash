@@ -5,14 +5,14 @@
   <% end %>
 
 <%= form_tag sessions_path do %>
-  <p>
+  <div class="form-group">
     <%= label_tag :email %><br />
     <%= text_field_tag :email, params[:email] %>  
-  </p>
-  <p>
+  </div>
+  <div class="form-group">
     <%= label_tag :password %><br />
     <%= password_field_tag :password %>
-  </p>
-  <p class="button"><%= submit_tag "Log in" %></p>
+  </div>
+  <p><%= submit_tag "Log in", class: "btn btn-primary btn-lg" %></p>
 <% end %>
 <%= link_to "Forgot password?", forgot_passwords_path %>

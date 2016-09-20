@@ -12,10 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= require 'bootstrap-sass-official'
  */
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
 h1 {
   color: #dd2222;
 }

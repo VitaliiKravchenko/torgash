@@ -44,6 +44,7 @@ gem 'pg'
 #gem 'taps'
 #gem 'angular-rails'
 gem 'bower-rails'
+gem 'faker'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

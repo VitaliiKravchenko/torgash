@@ -97,3 +97,19 @@ Message.create!([
 Micropost.create!([
   {content: "<p>vxcxcvxxvcxvc fdsfsd</p>", user_id: 1, product_id: 2, content1: "vxcxcvxxvcxvc fdsfsd"}
 ])
+
+350.times do |i|
+  User.create!(
+    login: "#{Faker::Internet.user_name}#{i}",
+    full_name: Faker::Name.name,
+    birthday: Faker::Date.between(40.years.ago, 15.years.ago),
+    email: Faker::Internet.email,
+    country: Faker::Address.country,
+    state: Faker::Address.state,
+    city: Faker::Address.city,
+    zip: Faker::Address.zip,
+    password: Faker::Internet.password(8),
+    password_confirmation: Faker::Internet.password(8),
+    name:"#{Faker::Internet.user_name}#{i}")
+    
+end
