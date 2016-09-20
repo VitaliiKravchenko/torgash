@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, only: [:create, :update, :destroy, :new, :edit]
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   rescue_from ActionController::RoutingError, with:  :record_not_found
+  rescue_from Exception, with: :record_not_found
  
 
   def current_user
@@ -16,6 +17,11 @@ class ApplicationController < ActionController::Base
         @current_user= User.find(session[:user_id])
       end
     end
+  end
+    
+  def record_not_found
+    #render plain: "404 Not Found", status: 404
+    redirect_to root_path, notice: '404 Not Found'
   end
 
   private
@@ -37,8 +43,4 @@ class ApplicationController < ActionController::Base
       end
     end
  
-    def record_not_found
-      render plain: "404 Not Found", status: 404
-    end
-
 end
