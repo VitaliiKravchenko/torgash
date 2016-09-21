@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
-  get '*unmatched_route', to: 'application#record_not_found'
+#  get '*unmatched_route', to: 'application#record_not_found'
 end
 
   # The priority is based upon order of creation: first created -> highest priority.

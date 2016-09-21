@@ -4,16 +4,17 @@ class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
   has_many :conversations,:foreign_key => :sender_id, dependent: :destroy
   
-  validates :login, :full_name,:birthday,:country,:state,:name,:city,:zip, presence: true, length: { in: 1..50 }, if: "provider.nil?"
+  validates :login, :full_name,:birthday,:country,:state,:name,:city,:zip, presence: true, length: { in: 1..200 }, if: "provider.nil?"
 
   attr_accessor :password, :password_confirmation
   if Rails.env != 'test'
+#  unless ['test', 'development'].include?(Rails.env)
     geocoded_by :address   # can also be an IP address
     after_validation :geocode          # auto-fetch coordinates
   end
   before_save :encrypt_password
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, length: { in: 3..100}, format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}, if: "provider.nil?"
+  validates :email, presence: true, length: { in: 3..200}, format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}, if: "provider.nil?"
   validates :password, :password_confirmation, presence: true, length: { in: 4..200}, if: "provider.nil?"
   def address
     [country, state, city].compact.join(', ')

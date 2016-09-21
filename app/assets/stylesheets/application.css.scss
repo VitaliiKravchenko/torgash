@@ -14,6 +14,10 @@
  *= require_self
  *= require 'bootstrap-sass-official'
  */
+body {
+  background-image: image-url('ray-1529417_1920.jpg');
+  background-size: 100%;
+                }
 h1 {
   color: #dd2222;
 }

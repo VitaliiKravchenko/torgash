@@ -1,6 +1,6 @@
 class ConversationsController < ApplicationController
   def index
-    @users = User.all
+    @users = User.all.page params[:page]
     @conversations = Conversation.all
   end
 

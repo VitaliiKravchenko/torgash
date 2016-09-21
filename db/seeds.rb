@@ -98,7 +98,7 @@ Micropost.create!([
   {content: "<p>vxcxcvxxvcxvc fdsfsd</p>", user_id: 1, product_id: 2, content1: "vxcxcvxxvcxvc fdsfsd"}
 ])
 
-200.times do |i|
+1000.times do |i|
   User.create!(
     login: "#{Faker::Internet.user_name}#{i}",
     full_name: Faker::Name.name,
