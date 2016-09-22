@@ -12,11 +12,12 @@ class ApplicationController < ActionController::Base
  
 
   def current_user
-    if session[:user_id]
-      if User.exists?(session[:user_id])
-        @current_user= User.find(session[:user_id])
-      end
-    end
+#    if session[:user_id]
+#      if User.exists?(session[:user_id])
+#        @current_user= User.find(session[:user_id])
+#      end
+#    end
+    @current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
   end
     
   def record_not_found

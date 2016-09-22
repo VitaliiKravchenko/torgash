@@ -13,6 +13,12 @@
     <%= label_tag :password %><br />
     <%= password_field_tag :password %>
   </div>
+  <div class= "field">
+    <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+    <%= label_tag :remember_me %>
+  </div>
   <p><%= submit_tag "Log in", class: "btn btn-primary btn-lg" %></p>
 <% end %>
+
+
 <%= link_to "Forgot password?", forgot_passwords_path %>
