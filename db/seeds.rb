@@ -16,57 +16,31 @@ Micropost.connection.execute('ALTER SEQUENCE microposts_id_seq RESTART WITH 1')
 User.create!([
   {login: "admin", full_name: "admin", birthday: "10.04.1988", email: "admin@admin.ua", country: "Ukraine", state: "Київська", city: "Бориспіль", zip: "08304", password: "admin", password_confirmation: "admin", latitude: 50.3482, longitude: 30.95615, provider: nil, uid: nil, name: "admin", oauth_token: nil, oauth_expires_at: nil, password_hash: "$2a$10$c9/HklBnSdKp8.JOrHCzY.VrSdYCG8LeE.4rRMc17I9SIPjSc.TSO", password_salt: "$2a$10$c9/HklBnSdKp8.JOrHCzY.", role: "admin", token: nil},
   {login: "moderator", full_name: "moderator", birthday: "10.04.1988", email: "moderator@moderator.ua", country: "moderator", state: "moderator", city: "moderator", zip: "2333", password: "moderator", password_confirmation: "moderator", name: "moderator", role: "moderator"},
-  {login: "admin", full_name: "admin", birthday: "10.04.1988", email: "admin1@admin.ua", country: "Ukraine", state: "Київська", city: "Бориспіль", zip: "08304", password: "admin", password_confirmation: "admin", latitude: 50.3482, longitude: 30.95615, provider: nil, uid: nil, name: "admin", oauth_token: nil, oauth_expires_at: nil, password_hash: "$2a$10$c9/HklBnSdKp8.JOrHCzY.VrSdYCG8LeE.4rRMc17I9SIPjSc.TSO", password_salt: "$2a$10$c9/HklBnSdKp8.JOrHCzY.", role: "admin", token: nil},
-  {login: "admin", full_name: "admin", birthday: "10.04.1988", email: "admin2@admin.ua", country: "Ukraine", state: "Київська", city: "Бориспіль", zip: "08304", password: "admin", password_confirmation: "admin", latitude: 50.3482, longitude: 30.95615, provider: nil, uid: nil, name: "admin", oauth_token: nil, oauth_expires_at: nil, password_hash: "$2a$10$c9/HklBnSdKp8.JOrHCzY.VrSdYCG8LeE.4rRMc17I9SIPjSc.TSO", password_salt: "$2a$10$c9/HklBnSdKp8.JOrHCzY.", role: "admin", token: nil},
-  {login: "admin", full_name: "admin", birthday: "10.04.1988", email: "admin3@admin.ua", country: "Ukraine", state: "Київська", city: "Бориспіль", zip: "08304", password: "admin", password_confirmation: "admin", latitude: 50.3482, longitude: 30.95615, provider: nil, uid: nil, name: "admin", oauth_token: nil, oauth_expires_at: nil, password_hash: "$2a$10$c9/HklBnSdKp8.JOrHCzY.VrSdYCG8LeE.4rRMc17I9SIPjSc.TSO", password_salt: "$2a$10$c9/HklBnSdKp8.JOrHCzY.", role: "admin", token: nil},
-  {login: "admin", full_name: "admin", birthday: "10.04.1988", email: "admin4@admin.ua", country: "Ukraine", state: "Київська", city: "Бориспіль", zip: "08304", password: "admin", password_confirmation: "admin", latitude: 50.3482, longitude: 30.95615, provider: nil, uid: nil, name: "admin", oauth_token: nil, oauth_expires_at: nil, password_hash: "$2a$10$c9/HklBnSdKp8.JOrHCzY.VrSdYCG8LeE.4rRMc17I9SIPjSc.TSO", password_salt: "$2a$10$c9/HklBnSdKp8.JOrHCzY.", role: "admin", token: nil},
-  {login: "admin", full_name: "admin", birthday: "10.04.1988", email: "admin5@admin.ua", country: "Ukraine", state: "Київська", city: "Бориспіль", zip: "08304", password: "admin", password_confirmation: "admin", latitude: 50.3482, longitude: 30.95615, provider: nil, uid: nil, name: "admin", oauth_token: nil, oauth_expires_at: nil, password_hash: "$2a$10$c9/HklBnSdKp8.JOrHCzY.VrSdYCG8LeE.4rRMc17I9SIPjSc.TSO", password_salt: "$2a$10$c9/HklBnSdKp8.JOrHCzY.", role: "admin", token: nil},
-  {login: "admin", full_name: "admin", birthday: "10.04.1988", email: "admin6@admin.ua", country: "Ukraine", state: "Київська", city: "Бориспіль", zip: "08304", password: "admin", password_confirmation: "admin", latitude: 50.3482, longitude: 30.95615, provider: nil, uid: nil, name: "admin", oauth_token: nil, oauth_expires_at: nil, password_hash: "$2a$10$c9/HklBnSdKp8.JOrHCzY.VrSdYCG8LeE.4rRMc17I9SIPjSc.TSO", password_salt: "$2a$10$c9/HklBnSdKp8.JOrHCzY.", role: "admin", token: nil},
-  {login: "moderator", full_name: "moderator", birthday: "10.04.1988", email: "moderator1@moderator.ua", country: "moderator", state: "moderator", city: "moderator", zip: "2333", password: "moderator", password_confirmation: "moderator", name: "moderator", role: "moderator"},
-  {login: "moderator", full_name: "moderator", birthday: "10.04.1988", email: "moderator2@moderator.ua", country: "moderator", state: "moderator", city: "moderator", zip: "2333", password: "moderator", password_confirmation: "moderator", name: "moderator", role: "moderator"},
-  {login: "moderator", full_name: "moderator", birthday: "10.04.1988", email: "moderator3@moderator.ua", country: "moderator", state: "moderator", city: "moderator", zip: "2333", password: "moderator", password_confirmation: "moderator", name: "moderator", role: "moderator"},
-  {login: "moderator", full_name: "moderator", birthday: "10.04.1988", email: "moderator4@moderator.ua", country: "moderator", state: "moderator", city: "moderator", zip: "2333", password: "moderator", password_confirmation: "moderator", name: "moderator", role: "moderator"},
-  {login: "moderator", full_name: "moderator", birthday: "10.04.1988", email: "moderator5@moderator.ua", country: "moderator", state: "moderator", city: "moderator", zip: "2333", password: "moderator", password_confirmation: "moderator", name: "moderator", role: "moderator"},
-  {login: "moderator", full_name: "moderator", birthday: "10.04.1988", email: "moderator6@moderator.ua", country: "moderator", state: "moderator", city: "moderator", zip: "2333", password: "moderator", password_confirmation: "moderator", name: "moderator", role: "moderator"},
   {login: nil, full_name: nil, birthday: nil, email: nil, country: nil, state: nil, city: nil, zip: nil, password_digest: nil, latitude: nil, longitude: nil, provider: "facebook", uid: "1073948082692185", name: "Vitaliy  Kravchenko", oauth_token: "EAASGgQgo2w0BAHHENpzaMGZBWCbQPoBbEZAqmMXBAILwftCZA2faabnHQ9I57RHd0hGk6F669PTnDDZCpLD4HBsqgKpckcgZBgZBkAjvP2ADj4cx3Y0jjKgobiflhwKzHu39hvuZAsZCIpex3ZCUEVJR22dA07mrCgJYZD", oauth_expires_at: "2016-10-23 13:51:39", password_hash: nil, password_salt: nil, role: nil, token: nil}
 ])
-Product.create!([
-  {title: "1", description: "1", image_url: "", price: "1.0", user_id: 1, description1: nil, image: nil},
-  {title: "xcv", description: "very good choice for special people", image_url: "", price: "1.0", user_id: 1, description1: nil, image: nil},
-  {title: "honey", description: "tasty honey", image_url: "", price: "54.0", user_id: 1, description1: nil, image: nil},
-  {title: "honey", description: "bad", image_url: "", price: "1.0", user_id: 1, description1: nil, image: nil},
-  {title: "vosk", description: "honey", image_url: "", price: "54.0", user_id: 1, description1: nil, image: nil},
-  {title: "honey", description: "vosk hop", image_url: "", price: "90.0", user_id: 1, description1: nil, image: nil},
-  {title: "honey", description: "vosk hop", image_url: "", price: "90.0", user_id: 1, description1: nil, image: nil},
-  {title: "hok", description: "honey", image_url: "", price: "43.0", user_id: 2, description1: nil, image: nil},
-  {title: "1", description: "1", image_url: "", price: "1.0", user_id: 2, description1: nil, image: nil},
-  {title: "1", description: "1", image_url: "", price: "1.0", user_id: 2, description1: nil, image: nil},
-  {title: "honey", description: "tasty honey", image_url: "", price: "54.0", user_id: 1, description1: nil, image: nil},
-  {title: "honey", description: "tasty honey", image_url: "", price: "54.0", user_id: 1, description1: nil, image: nil},
-  {title: "honey", description: "tasty honey", image_url: "", price: "54.0", user_id: 1, description1: nil, image: nil},
-  {title: "honey", description: "bad", image_url: "", price: "1.0", user_id: 1, description1: nil, image: nil},
-  {title: "vosk", description: "honey", image_url: "", price: "54.0", user_id: 1, description1: nil, image: nil},
-  {title: "honey", description: "vosk hop", image_url: "", price: "90.0", user_id: 1, description1: nil, image: nil},
-  {title: "honey", description: "vosk hop", image_url: "", price: "90.0", user_id: 1, description1: nil, image: nil},
-  {title: "hok", description: "honey", image_url: "", price: "43.0", user_id: 2, description1: nil, image: nil},
-  {title: "1", description: "1", image_url: "", price: "1.0", user_id: 2, description1: nil, image: nil},
-  {title: "1", description: "1", image_url: "", price: "1.0", user_id: 2, description1: nil, image: nil},
-  {title: "honey", description: "bad", image_url: "", price: "1.0", user_id: 1, description1: nil, image: nil},
-  {title: "vosk", description: "honey", image_url: "", price: "54.0", user_id: 1, description1: nil, image: nil},
-  {title: "honey", description: "vosk hop", image_url: "", price: "90.0", user_id: 1, description1: nil, image: nil},
-  {title: "honey", description: "vosk hop", image_url: "", price: "90.0", user_id: 1, description1: nil, image: nil},
-  {title: "hok", description: "honey", image_url: "", price: "43.0", user_id: 2, description1: nil, image: nil},
-  {title: "1", description: "1", image_url: "", price: "1.0", user_id: 2, description1: nil, image: nil},
-  {title: "1", description: "1", image_url: "", price: "1.0", user_id: 2, description1: nil, image: nil},
-  {title: "honey", description: "bad", image_url: "", price: "1.0", user_id: 1, description1: nil, image: nil},
-  {title: "vosk", description: "honey", image_url: "", price: "54.0", user_id: 1, description1: nil, image: nil},
-  {title: "honey", description: "vosk hop", image_url: "", price: "90.0", user_id: 1, description1: nil, image: nil},
-  {title: "honey", description: "vosk hop", image_url: "", price: "90.0", user_id: 1, description1: nil, image: nil},
-  {title: "hok", description: "honey", image_url: "", price: "43.0", user_id: 2, description1: nil, image: nil},
-  {title: "1", description: "1", image_url: "", price: "1.0", user_id: 2, description1: nil, image: nil},
-  {title: "1", description: "1", image_url: "", price: "1.0", user_id: 2, description1: nil, image: nil},
-  {title: "1", description: "1", image_url: "", price: "1.0", user_id: 2, description1: nil, image: nil}
-])
+1000.times do |i|
+  User.create!(
+    login: "#{Faker::Internet.user_name}#{i}",
+    full_name: Faker::Name.name,
+    birthday: Faker::Date.between(40.years.ago, 15.years.ago),
+    email: Faker::Internet.email,
+    country: Faker::Address.country,
+    state: Faker::Address.state,
+    city: Faker::Address.city,
+    zip: Faker::Address.zip,
+    password: Faker::Internet.password(8),
+    password_confirmation: Faker::Internet.password(8),
+    name:"#{Faker::Internet.user_name}#{i}")
+end
+
+1000.times do |i|
+  Product.create!(
+    title: Faker::Commerce.product_name,
+    description: Faker::Lorem.paragraph,
+    price: Faker::Commerce.price,
+    image: open("app/assets/images/#{rand(1..4).to_s}.jpg") , #rand(1..5).to_s + ".jpg",
+    user_id: rand(1..User.all.count) )
+end  
 Conversation.create!([
   {sender_id: 2, recipient_id: 1},
   {sender_id: 2, recipient_id: 6},
@@ -98,18 +72,3 @@ Micropost.create!([
   {content: "<p>vxcxcvxxvcxvc fdsfsd</p>", user_id: 1, product_id: 2, content1: "vxcxcvxxvcxvc fdsfsd"}
 ])
 
-1000.times do |i|
-  User.create!(
-    login: "#{Faker::Internet.user_name}#{i}",
-    full_name: Faker::Name.name,
-    birthday: Faker::Date.between(40.years.ago, 15.years.ago),
-    email: Faker::Internet.email,
-    country: Faker::Address.country,
-    state: Faker::Address.state,
-    city: Faker::Address.city,
-    zip: Faker::Address.zip,
-    password: Faker::Internet.password(8),
-    password_confirmation: Faker::Internet.password(8),
-    name:"#{Faker::Internet.user_name}#{i}")
-    
-end
