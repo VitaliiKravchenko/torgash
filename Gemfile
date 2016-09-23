@@ -45,6 +45,7 @@ gem 'pg'
 #gem 'angular-rails'
 gem 'bower-rails'
 gem 'faker'
+gem 'magnific-popup-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

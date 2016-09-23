@@ -16,7 +16,7 @@
       <th>Product owner</th>
       <th>Title</th>
       <th>Description</th>
-      <th>Image url</th>
+      <th>Image</th>
       <th>Price</th>
       <th colspan="3"></th>
     </tr>
@@ -28,7 +28,7 @@
         <td><%= product.user.name %></td>
         <td><%=link_to product.title, product %></td>
         <td><%=truncate(product.description.html_safe, :length => 163, :separator => ' ') %></td>
-        <td><%=image_tag product.image_url(:thumbnail) %></td>
+        <td><%= link_to((image_tag product.image_url(:thumbnail)), image_path(product.image_url),  class: 'image-popup-vertical-fit')%></td>
         <td><%= product.price %></td>
         <% if current_user %>
           <% if ["admin", "moderator"].include?(current_user.role) || current_user.id == product.user_id %>

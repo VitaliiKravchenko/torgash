@@ -16,7 +16,7 @@
 
 <p>
   <strong>Image url:</strong>
-  <% unless @product.image_url.nil? %><%= image_tag @product.image_url(:display) %><br /><% end %>
+  <% unless @product.image_url.nil? %><%=link_to((image_tag @product.image_url(:display)), image_path(@product.image_url),  class: 'image-popup-vertical-fit') %><% end %>
 </p>
 
 <p>

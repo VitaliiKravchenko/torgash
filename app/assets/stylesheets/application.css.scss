@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  *= require 'bootstrap-sass-official'
+ *= require magnific-popup
  */
 body {
   background-image: image-url('b38.jpg');
@@ -24,3 +25,18 @@ h1 {
 .use {
   color: #dd2222;
 }
+
+
+.mfp-no-margins img.mfp-img {
+  padding: 0;
+}
+/* position of shadow behind the image */
+.mfp-no-margins .mfp-figure:after {
+  top: 0;
+  bottom: 0;
+}
+/* padding for main container */
+.mfp-no-margins .mfp-container {
+  padding: 0;
+}
+

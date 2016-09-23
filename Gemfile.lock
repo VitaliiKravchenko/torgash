@@ -140,6 +140,7 @@ GEM
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.10)
+    magnific-popup-rails (1.1.0)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
     meta_request (0.4.0)
@@ -317,6 +318,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   listen
+  magnific-popup-rails
   meta_request
   mini_magick
   minitest-reporters
