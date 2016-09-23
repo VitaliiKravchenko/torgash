@@ -18,7 +18,7 @@ User.create!([
   {login: "moderator", full_name: "moderator", birthday: "10.04.1988", email: "moderator@moderator.ua", country: "moderator", state: "moderator", city: "moderator", zip: "2333", password: "moderator", password_confirmation: "moderator", name: "moderator", role: "moderator"},
   {login: nil, full_name: nil, birthday: nil, email: nil, country: nil, state: nil, city: nil, zip: nil, password_digest: nil, latitude: nil, longitude: nil, provider: "facebook", uid: "1073948082692185", name: "Vitaliy  Kravchenko", oauth_token: "EAASGgQgo2w0BAHHENpzaMGZBWCbQPoBbEZAqmMXBAILwftCZA2faabnHQ9I57RHd0hGk6F669PTnDDZCpLD4HBsqgKpckcgZBgZBkAjvP2ADj4cx3Y0jjKgobiflhwKzHu39hvuZAsZCIpex3ZCUEVJR22dA07mrCgJYZD", oauth_expires_at: "2016-10-23 13:51:39", password_hash: nil, password_salt: nil, role: nil, token: nil}
 ])
-1000.times do |i|
+10.times do |i|
   User.create!(
     login: "#{Faker::Internet.user_name}#{i}",
     full_name: Faker::Name.name,
@@ -33,7 +33,7 @@ User.create!([
     name:"#{Faker::Internet.user_name}#{i}")
 end
 
-1000.times do |i|
+10.times do |i|
   Product.create!(
     title: Faker::Commerce.product_name,
     description: Faker::Lorem.paragraph,

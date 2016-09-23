@@ -9,7 +9,7 @@ class ImageUploader < CarrierWave::Uploader::Base
       "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
     end
     version :display do
-      process :resize_to_fill => [400, 400, :north]
+      process :resize_to_fit => [400, 400]
     end
 
     version :thumbnail do 
@@ -19,7 +19,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     include Cloudinary::CarrierWave
     version :display do
       process :eager => true
-      process :resize_to_fill => [400, 400, :north]
+      process :resize_to_fit => [400, 400]
     end
 
     version :thumbnail do 
