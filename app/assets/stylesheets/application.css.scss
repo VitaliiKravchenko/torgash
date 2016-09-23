@@ -16,16 +16,14 @@
  *= require magnific-popup
  */
 body {
-  background-image: image-url('b38.jpg');
-#  background-size: 100%;
+  background-image: image-url('blue.jpg');
+  background-size: 100%;
                 }
-h1 {
-  color: #dd2222;
-}
-.use {
-  color: #dd2222;
-}
 
+
+a.product_title {
+    color: black;
+}
 
 .mfp-no-margins img.mfp-img {
   padding: 0;

@@ -15,7 +15,12 @@ class User < ActiveRecord::Base
   before_create { generate_rem_token(:auth_token) }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { in: 3..200}, format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}, if: "provider.nil?"
-  validates :password, :password_confirmation, presence: true, length: { in: 4..200}, if: "provider.nil?"
+  if @user
+  if ["admin"].include?(@user.current_user_role) 
+    validates :password, :password_confirmation, presence: true, length: { in: 4..200}, if: "provider.nil?"
+  end
+  end
+
   def address
     [country, state, city].compact.join(', ')
   end

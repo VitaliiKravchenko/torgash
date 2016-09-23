@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   before_action :authenticate_user!, only: [:create, :update, :destroy, :new, :edit]
-  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+#  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 #  rescue_from ActionController::RoutingError, with:  :record_not_found
 #  rescue_from Exception, with: :record_not_found
  
