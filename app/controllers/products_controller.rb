@@ -9,6 +9,10 @@ class ProductsController < ApplicationController
     else
       @products = Product.all.order('updated_at DESC').page params[:page]
     end
+    respond_to do |format|
+      format.html {}
+      format.json { render json: @products }
+    end
   end
 
   # GET /products/1

@@ -15,6 +15,8 @@
 //= require angular
 //= require magnific-popup
 //= require angular_test_app
+//= require products_app
+//= require_tree .
 $(document).ready(function() {
 //  $(document).on('page:load ready', function() {
   

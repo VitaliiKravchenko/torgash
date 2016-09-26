@@ -1,3 +1,4 @@
+<article ng-app="products" ng-controller="ProductsController">
 
 <%= form_tag products_path, class: "form-inline", method: :get do%>
   <%= text_field_tag :search, params[:search], placeholder: "search", class: "form-control" %>
@@ -7,6 +8,48 @@
   <%end%>
 <%end%>
 
+
+<section class="search-form">
+  <form>
+    <div class="input-group input-group-md">
+    <label for="search.search" class="sr-only">Search</label>
+    <input type="text"
+          name="search"
+          class="form-control input-md"
+          placeholder="Title, description or product owner"
+          ng-model="search">
+      <span class="input-group-btn">
+        <button class="btn btn-primary"
+              ng-click="search(search)">
+        Find Products
+        </button>
+      </span>
+    </div>
+  </form>
+  <h1 class="searchedFor" ng-if="searchedFor">
+    <small>Searched for:</small> {{searchedFor}}
+  </h1>
+</section>
+
+<section class="search-results">
+  <header>
+    <h1 class="h3">Results</h1>
+  </header>
+  <ol class="list-group">
+    <li class="list-group-item clearfix"
+         ng-repeat="product in products">
+      <h3 class="pull-right">
+        <small class="text-uppercase">Joined</small>
+        {{ product.created_at }}
+      </h3>
+      <h2 class="h3">
+          {{ product.title }} {{ product.description }}
+          <small>{{ customer.usersname }}</small>
+      </h2>
+      <h4>{{ product.title }}</h4>
+    </li>
+  </ol>
+</section>
 
 <h1>Listing Products</h1>
 
@@ -46,3 +89,5 @@
 <% if current_user %>
   <%= link_to 'New Product', new_product_path %>
 <% end %>
+
+</article>
