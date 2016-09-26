@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
+  get "angular_test", to: "angular_test#index"
 #  get '*unmatched_route', to: 'application#record_not_found'
 end
 

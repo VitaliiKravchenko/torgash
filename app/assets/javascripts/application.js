@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require angular
 //= require magnific-popup
+//= require angular_test_app
 $(document).ready(function() {
 //  $(document).on('page:load ready', function() {
   
