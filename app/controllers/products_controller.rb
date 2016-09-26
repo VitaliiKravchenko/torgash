@@ -5,9 +5,9 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     if params[:search].present?
-      @products = Product.search(params[:search]).page params[:page]
+      @products = Product.search(params[:search]).order('users.name').page params[:page]
     else
-      @products = Product.all.page params[:page]
+      @products = Product.all.order('updated_at DESC').page params[:page]
     end
   end
 

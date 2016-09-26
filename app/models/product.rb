@@ -12,6 +12,6 @@ class Product < ActiveRecord::Base
   paginates_per 10 
     
   def self.search(search)
-    joins(:user).where('products.title LIKE ? OR products.description LIKE ? OR users.name LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
+    joins(:user).where('lower(products.title) LIKE ? OR lower(products.description) LIKE ? OR lower(users.name) LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
   end
 end
