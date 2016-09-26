@@ -1,7 +1,7 @@
 <article ng-app="products" ng-controller="ProductsController">
 
 <%= form_tag products_path, class: "form-inline", method: :get do%>
-  <%= text_field_tag :search, params[:search], placeholder: "search", class: "form-control" %>
+  <%= text_field_tag :keywords, params[:keywords], placeholder: "search", class: "form-control" %>
   <%= submit_tag "Search", class: "btn btn-primary" %>
   <% if params[:search].present? %>
     <%= link_to "clear", products_path %>
@@ -12,15 +12,16 @@
 <section class="search-form">
   <form>
     <div class="input-group input-group-md">
-    <label for="search.search" class="sr-only">Search</label>
+    <label for="keywords" class="sr-only">Keywords</label>
     <input type="text"
-          name="search"
+          name="keywords"
           class="form-control input-md"
           placeholder="Title, description or product owner"
-          ng-model="search">
+          ng-change="search(keywords)"
+          ng-model="keywords">
       <span class="input-group-btn">
         <button class="btn btn-primary"
-              ng-click="search(search)">
+              ng-click="search(keywords)">
         Find Products
         </button>
       </span>

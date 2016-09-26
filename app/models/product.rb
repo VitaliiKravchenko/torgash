@@ -11,7 +11,7 @@ class Product < ActiveRecord::Base
   validates :description, length: { maximum: 2000}
   paginates_per 10 
     
-  def self.search(search)
-    joins(:user).where('lower(products.title) LIKE ? OR lower(products.description) LIKE ? OR lower(users.name) LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%")
+  def self.search(keywords)
+    joins(:user).where('lower(products.title) LIKE ? OR lower(products.description) LIKE ? OR lower(users.name) LIKE ?', "%#{keywords}%", "%#{keywords}%", "%#{keywords}%")
   end
 end
