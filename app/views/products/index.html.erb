@@ -40,14 +40,22 @@
     <li class="list-group-item clearfix"
          ng-repeat="product in products">
       <h3 class="pull-right">
-        <small class="text-uppercase">Joined</small>
-        {{ product.created_at }}
+        {{ product.user.name }}
       </h3>
-      <h2 class="h3">
-          {{ product.title }} {{ product.description }}
-          <small>{{ customer.usersname }}</small>
+      <h2 class="h3"> 
+           <div>
+             <%=link_to "{{product.title}}",'fd','ng-href' => "#{products_path()}/{{product.id}}"%>
+           </div>
+        <h4 class="h5">
+           <div ng-bind-html="product.description">
+             {{ product.description }}
+           </div>
+        </div>
+          <small>{{ product.user.name }}</small>
       </h2>
-      <h4>{{ product.title }}</h4>
+      <a class="image-popup-vertical-fit" magnific-image href="{{ product.image_url }}" >
+        <img ng-src="{{ product.image.thumbnail.url }}" >
+      </a>
     </li>
   </ol>
 </section>

@@ -1,4 +1,6 @@
-var app = angular.module("products",[]);
+var app = angular.module("products",[]).config(function($sceProvider) {
+  $sceProvider.enabled(false);
+});
 
 /*app.controller("ProductsController", [
               "$scope",
@@ -15,6 +17,7 @@ app.controller("ProductsController", [
   function($scope , $http) {
     $scope.products = [];
     $scope.search = function(search) {
+    $scope.searchedFor = search;
       if (search.length < 3) {
         return;
       }
@@ -29,4 +32,51 @@ app.controller("ProductsController", [
     }
   }
 ]);
+
+app.directive('magnificImage', magnificImageDirective);
+
+function maginificImageDirective() {
+    return {
+        restrict: 'A',
+        link: function (scope, iElement) {
+            scope.$evalAsync(function () {
+                iElement.magnificPopup({
+                    // ... magnific options
+                      type: 'image',
+                      closeOnContentClick: true,
+                      mainClass: 'mfp-img-mobile',
+                      image: {
+                              verticalFit: true
+                             } 
+                });
+            });
+        }
+    };
+};
+/*
+angular.module().directive('magnificPopup',
+    [
+        "$compile", 
+        function($compile) {
+            return {
+                restrict: 'A',
+                scope: {},
+                link: function($scope, element, attr) {
+                    attr.callbacks = {
+                        ajaxContentAdded: function() {
+                            var content = this.content;
+    
+                            var scope =  content.scope();
+                            $compile(content)(scope);
+                            scope.$digest();
+                        }
+                    };
+    
+                    element.magnificPopup(attr);
+                }
+            }
+        }
+    ]
+);
+*/
                    

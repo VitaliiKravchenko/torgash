@@ -14,4 +14,8 @@ class Product < ActiveRecord::Base
   def self.search(keywords)
     joins(:user).where('lower(products.title) LIKE ? OR lower(products.description) LIKE ? OR lower(users.name) LIKE ?', "%#{keywords}%", "%#{keywords}%", "%#{keywords}%")
   end
+  
+  def as_json(options = {})
+    super(options.merge(include: :user))
+  end
 end
