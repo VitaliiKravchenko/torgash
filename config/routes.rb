@@ -30,7 +30,16 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
+
+
+
   get "angular_test", to: "angular_test#index"
+  get "angular_test/tabletsList", to: "angular_test#tabletsList"
+  get "angular_test/phonesList", to: "angular_test#phonesList"
+
+
+
+
 #  get '*unmatched_route', to: 'application#record_not_found'
 end
 

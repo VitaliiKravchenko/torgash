@@ -1,6 +1,6 @@
-var app = angular.module("products",[]).config(function($sceProvider) {
+var app = angular.module("products",["ngSanitize"]);/*.config(function($sceProvider) {
   $sceProvider.enabled(false);
-});
+});*/
 
 /*app.controller("ProductsController", [
               "$scope",
@@ -33,7 +33,6 @@ app.controller("ProductsController", [
   }
 ]);
 
-app.directive('magnificImage', magnificImageDirective);
 
 function maginificImageDirective() {
     return {

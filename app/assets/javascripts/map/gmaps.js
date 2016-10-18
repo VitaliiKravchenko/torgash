@@ -1,4 +1,4 @@
-$(window).on('load', function() {
+/*$(window).on('load', function() {
   loadScript();
 });
 
@@ -105,10 +105,9 @@ function loadScript() {
   var script = document.createElement('script');
   script.type = 'text/javascript';
 /*  //'https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBJYFdplGeKUUEmGZ-vL4ydiSZ09Khsa_o&sensor=false&libraries=drawing'*/
-  script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp' +
-    '&v=3'+
+/*    '&v=3'+
     '&key=AIzaSyBJYFdplGeKUUEmGZ-vL4ydiSZ09Khsa_o'+
- /*   '&libraries=drawing'+ */
+//    '&libraries=drawing'+ 
     '&callback=initialize'; 
   document.body.appendChild(script);
-}
+} */

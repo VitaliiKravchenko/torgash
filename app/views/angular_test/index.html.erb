@@ -1,18 +1,50 @@
-<article ng-app="angular_test">
-  <header>
-    <h1 ng-if="name">Hello, {{name}}</h1>
-  </header>
-  <section>
-    <form class="form_inline">
-      <div class="name">Name</label>
-      <input class="form-control"
-                  name="name"
-                  type="text"
-                  placeholder="Enter your name"
-                  autofocus
-                  ng-model="name">
-      </div>
-    </form>
-  </section>
-</article>
 
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<title>Dependency Injection</title>
+<meta charset="utf-8" />
+</head>
+<body>
+<div ng-controller="myController">
+<button ng-click="buttonClick()">Не нажимать</button>
+</div>
+<script>
+angular.module("myApp", []).controller("myController", function ($scope, $injector) {
+    var counter = 0;
+    var getData = function (dataService, message) {
+        if (counter %2 == 0) {
+            console.log(dataService.question);
+        } 
+        else {
+            console.log(message);
+        }
+        counter++;
+    }
+    $scope.buttonClick = function () {
+        var deps = $injector.annotate(getData);
+        var args = [];
+        for (var i = 0; i < deps.length; i++) {
+            if ($injector.has(deps[i])) {
+                args.push($injector.get(deps[i]));
+                console.log("Сервис: " + deps[i]);
+            } 
+            else if (deps[i] == "message") {
+                args.push("Привет мир");
+                console.log("" + deps[i]);
+            }
+        }
+        getData.apply(null, args);
+    };
+}).factory('dataService', function(){
+    return{
+        question:{
+            text: 'Какой js-фреймворк лучше использовать?',
+            author: 'Иван Иванов',
+            date: '20/10/2013'
+        }
+    };
+});
+</script>
+</body>
+</html>
